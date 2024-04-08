@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "931408982383",
+    "firebase_url": "https://mobilalk-8e79b-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "mobilalk-8e79b",
+    "storage_bucket": "mobilalk-8e79b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931408982383:android:ad0c4cfbb35a40d0eaf89a",
+        "android_client_info": {
+          "package_name": "com.example.rendeles"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNJFvcXAukg1XvdN3MOIEgO2rsJVGvl3g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
