@@ -1,5 +1,7 @@
 package com.example.rendeles;
 
+import com.google.firebase.firestore.PropertyName;
+
 import java.util.List;
 import java.util.Map;
 
@@ -20,37 +22,44 @@ public class Restaurant {
         this.menuItems = menuItems;
     }
 
-    // Getterek és Setterek
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public List<Map<String, Object>> getMenuItems() {
-        return menuItems;
-    }
-
-    // Setter a menuItems-hez
-    public void setMenuItems(List<Map<String, Object>> menuItems) {
-        this.menuItems = menuItems;
-    }
-
+    // Getters and Setters
+    @PropertyName("id")
     public String getId() {
         return id;
     }
 
+    @PropertyName("id")
     public void setId(String id) {
         this.id = id;
+    }
+
+    @PropertyName("name")
+    public String getName() {
+        return name;
+    }
+
+    @PropertyName("name")
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @PropertyName("address")
+    public String getAddress() {
+        return address;
+    }
+
+    @PropertyName("address")
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @PropertyName("MenuItems")
+    public List<Map<String, Object>> getMenuItems() {
+        return menuItems;
+    }
+
+    @PropertyName("MenuItems")
+    public void setMenuItems(List<Map<String, Object>> menuItems) {
+        this.menuItems = menuItems;
     }
 }

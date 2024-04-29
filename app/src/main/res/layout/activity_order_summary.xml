@@ -11,13 +11,12 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/orderedItemsTextView"
+            android:id="@+id/totalAmountTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
             android:padding="8dp"
-            android:text="Rendelt ételek"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/listOfOrderedItemsTextView"
@@ -26,12 +25,21 @@
             android:padding="8dp"
             android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/nameEditText"
+        <TextView
+            android:id="@+id/totalPriceTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Név"
-            android:inputType="textPersonName"
+            android:padding="8dp"
+            android:text="Összesített ár: "
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/phoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Telefonszám"
+            android:inputType="phone"
             android:minHeight="48dp" />
 
         <EditText
@@ -43,11 +51,11 @@
             android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/phoneEditText"
+            android:id="@+id/nameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Telefonszám"
-            android:inputType="phone"
+            android:hint="Név"
+            android:inputType="textPersonName"
             android:minHeight="48dp" />
 
         <EditText

@@ -103,7 +103,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     private void redirectToWelcomeActivity() {
         Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
-        finish(); // To prevent returning to this activity
+        finish();
     }
 
 

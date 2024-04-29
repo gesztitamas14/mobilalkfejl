@@ -17,9 +17,30 @@ public class OrderSummaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_summary);
 
         String orderedItems = getIntent().getStringExtra("ORDERED_ITEMS");
+        String[] itemDetails = orderedItems.split("\n"); // Split at each newline
+        double totalPrice = 0.0;
+
+        for (String detail : itemDetails) {
+            if (!detail.isEmpty()) {
+                String[] parts = detail.split(", Ár: "); // Split by ", Ár: "
+                if (parts.length > 1) {
+                    String pricePart = parts[1].split(" Ft")[0].trim(); // Get the part before " Ft"
+                    try {
+                        double price = Double.parseDouble(pricePart);
+                        totalPrice += price;
+                    } catch (NumberFormatException e) {
+                        // Handle possible parsing errors or log them
+                    }
+                }
+            }
+        }
 
         TextView listOfOrderedItemsTextView = findViewById(R.id.listOfOrderedItemsTextView);
+        TextView totalPriceTextView = findViewById(R.id.totalPriceTextView);
+
         listOfOrderedItemsTextView.setText(orderedItems);
+        totalPriceTextView.setText("Összesített ár: " + String.format("%.2f Ft", totalPrice));
+
         Button confirmOrderButton = findViewById(R.id.confirmOrderButton);
         confirmOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,5 +54,6 @@ public class OrderSummaryActivity extends AppCompatActivity {
             }
         });
     }
-
 }
+
+
