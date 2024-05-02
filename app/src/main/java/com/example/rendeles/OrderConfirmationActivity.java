@@ -80,7 +80,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
                     public void onAnimationEnd(Animator animation) {
                         // Popup message
                         new AlertDialog.Builder(OrderConfirmationActivity.this)
-                                .setMessage("Szállítmányod megérkezett, jó étvágyat!")
+                                .setMessage("Rendelésed megérkezett, jó étvágyat!")
                                 .setPositiveButton("OK", (dialog, which) -> redirectToWelcomeActivity())
                                 .setCancelable(false)
                                 .show();
