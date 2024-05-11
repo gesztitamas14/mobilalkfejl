@@ -57,6 +57,26 @@ public class OrderSummaryActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveTemporaryData();
+    }
+
+    private void saveTemporaryData() {
+        EditText phoneNumberEditText = findViewById(R.id.phoneEditText);
+        EditText addressEditText = findViewById(R.id.addressEditText);
+        String phoneNumber = phoneNumberEditText.getText().toString();
+        String address = addressEditText.getText().toString();
+
+        // Use SharedPreferences to save the data
+        getSharedPreferences("OrderSummaryPrefs", MODE_PRIVATE)
+                .edit()
+                .putString("phoneNumber", phoneNumber)
+                .putString("address", address)
+                .apply();
+    }
+
     private boolean validateInputs() {
         EditText phoneEditText = findViewById(R.id.phoneEditText);
         String phone = phoneEditText.getText().toString().trim();
