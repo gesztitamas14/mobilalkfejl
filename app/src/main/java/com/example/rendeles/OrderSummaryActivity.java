@@ -17,14 +17,14 @@ public class OrderSummaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_summary);
 
         String orderedItems = getIntent().getStringExtra("ORDERED_ITEMS");
-        String[] itemDetails = orderedItems.split("\n"); // Split at each newline
+        String[] itemDetails = orderedItems.split("\n");
         double totalPrice = 0.0;
 
         for (String detail : itemDetails) {
             if (!detail.isEmpty()) {
-                String[] parts = detail.split(", Ár: "); // Split by ", Ár: "
+                String[] parts = detail.split(", Ár: ");
                 if (parts.length > 1) {
-                    String pricePart = parts[1].split(" Ft")[0].trim(); // Get the part before " Ft"
+                    String pricePart = parts[1].split(" Ft")[0].trim();
                     try {
                         double price = Double.parseDouble(pricePart);
                         totalPrice += price;
@@ -45,14 +45,47 @@ public class OrderSummaryActivity extends AppCompatActivity {
         confirmOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText addressEditText = findViewById(R.id.addressEditText);
-                String address = addressEditText.getText().toString();
+                if (validateInputs()) {
+                    EditText addressEditText = findViewById(R.id.addressEditText);
+                    String address = addressEditText.getText().toString();
 
-                Intent intent = new Intent(OrderSummaryActivity.this, OrderConfirmationActivity.class);
-                intent.putExtra("USER_ADDRESS", address);
-                startActivity(intent);
+                    Intent intent = new Intent(OrderSummaryActivity.this, OrderConfirmationActivity.class);
+                    intent.putExtra("USER_ADDRESS", address);
+                    startActivity(intent);
+                }
             }
         });
+    }
+
+    private boolean validateInputs() {
+        EditText phoneEditText = findViewById(R.id.phoneEditText);
+        String phone = phoneEditText.getText().toString().trim();
+        EditText nameEditText = findViewById(R.id.nameEditText);
+        String name = nameEditText.getText().toString().trim();
+        EditText addressEditText = findViewById(R.id.addressEditText);
+        String address = addressEditText.getText().toString().trim();
+
+
+        // Validate phone number
+        if (phone.isEmpty() || phone.length() != 11) {
+            phoneEditText.setError("Egy valós 11 számjegyű telefonszámot adj meg");
+            return false;
+        }
+
+        // Validate name
+        if (name.isEmpty()) {
+            nameEditText.setError("Adj meg egy nevet!");
+            return false;
+        }
+
+        // Validate address
+        if (address.isEmpty()) {
+            addressEditText.setError("Adj meg egy utcanevet!");
+            return false;
+        }
+
+        // All inputs are valid
+        return true;
     }
 }
 

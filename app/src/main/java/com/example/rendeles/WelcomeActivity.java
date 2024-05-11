@@ -76,7 +76,7 @@ public class WelcomeActivity extends AppCompatActivity {
         adapter = new RestaurantAdapter(restaurantList);
         recyclerView.setAdapter(adapter);
 
-        loadRestaurants();
+        //loadRestaurants();
         loadProfileIcon();
 
         profileIcon.setOnClickListener(new View.OnClickListener() {
@@ -111,12 +111,15 @@ public class WelcomeActivity extends AppCompatActivity {
                     public void onSuccess(Location location) {
                         if (location != null) {
                             determineCity(location);
+                            // Move the call to loadRestaurants here, once city is determined
+                            loadRestaurants();
                         } else {
                             Log.e("LocationError", "Location is null");
                         }
                     }
                 });
     }
+
 
     private void determineCity(Location location) {
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
@@ -125,7 +128,7 @@ public class WelcomeActivity extends AppCompatActivity {
             if (!addresses.isEmpty()) {
                 Address address = addresses.get(0);
                 userCity = address.getLocality();
-                //loadRestaurants();
+                // Since city is determined here, you might want to update related UI or logic here as well
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -200,10 +203,11 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getLastLocation();
-
+                getLastLocation(); // Call this to get location and update restaurants list
             } else {
-                Toast.makeText(this, "Location access needed to show local restaurants.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Lokáció engedélyezése szükséges a helyi éttermek megjelenítéséhez.", Toast.LENGTH_LONG).show();
+                // Consider updating UI to reflect that location-based filtering isn't available
+                loadRestaurants(); // Load restaurants without location filtering
             }
         }
     }

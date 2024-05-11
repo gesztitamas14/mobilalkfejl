@@ -56,9 +56,12 @@ public class MenuItemsActivity extends AppCompatActivity  {
 
     private void handleOrderSubmission() {
         String orderData = collectOrderData();
-        Intent intent = new Intent(this, OrderSummaryActivity.class);
-        intent.putExtra("ORDERED_ITEMS", orderData);
-        startActivity(intent);
+        if (!orderData.isEmpty()){
+            Intent intent = new Intent(this, OrderSummaryActivity.class);
+            intent.putExtra("ORDERED_ITEMS", orderData);
+            startActivity(intent);
+        }
+
     }
 
     private String collectOrderData() {

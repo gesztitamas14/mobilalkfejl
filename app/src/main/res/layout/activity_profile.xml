@@ -5,45 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:animateLayoutChanges="true"
     tools:context=".ProfileActivity">
 
     <TextView
         android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="Email Cím" />
+        android:text="Email Cím"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/newPasswordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ems="10"
         android:hint="Új jelszó"
         android:inputType="textPassword"
-        android:ems="10"/>
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/changePasswordButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Jelszó módosítása"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:text="Jelszó módosítása" />
 
     <Button
         android:id="@+id/deleteAccountButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fiók törlése"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:text="Fiók törlése" />
 
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vissza"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"/>
-
+        android:layout_marginTop="16dp"
+        android:text="Vissza" />
 </LinearLayout>
-

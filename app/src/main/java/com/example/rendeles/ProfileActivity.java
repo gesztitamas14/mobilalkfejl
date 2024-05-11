@@ -4,10 +4,14 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,15 +36,20 @@ public class ProfileActivity extends AppCompatActivity {
         deleteAccountButton = findViewById(R.id.deleteAccountButton);
         backButton = findViewById(R.id.backButton);
 
-
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
             emailTextView.setText(user.getEmail());
         }
 
-        if (user != null) {
-            emailTextView.setText(user.getEmail());
-        }
+        // Create and apply the fade-in animation programmatically
+        Animation fadeIn = new AlphaAnimation(0.0f, 1.0f);
+        fadeIn.setDuration(1000);
+        fadeIn.setFillAfter(true);
+        emailTextView.startAnimation(fadeIn);
+        newPasswordEditText.startAnimation(fadeIn);
+        changePasswordButton.startAnimation(fadeIn);
+        deleteAccountButton.startAnimation(fadeIn);
+        backButton.startAnimation(fadeIn);
 
         deleteAccountButton.setOnClickListener(v -> confirmAccountDeletion(user));
         backButton.setOnClickListener(v -> finish());
@@ -54,6 +63,8 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void updatePassword(FirebaseUser user, String newPassword) {
         if (user != null) {
